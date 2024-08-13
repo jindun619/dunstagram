@@ -1,5 +1,6 @@
 import {Text} from 'react-native';
 import styled from 'styled-components/native';
+import Post from '../components/Post';
 
 const Container = styled.View`
   flex: 1;
@@ -11,7 +12,7 @@ const Container = styled.View`
 const Home = () => {
   return (
     <Container>
-      <Text>Home</Text>
+      <Post />
     </Container>
   );
 };
