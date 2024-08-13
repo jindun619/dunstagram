@@ -12,7 +12,10 @@ const Id = styled.Text`
   font-size: 15px;
   font-weight: 600;
 `;
-const MoreBtn = styled.TouchableOpacity``;
+const MoreBtn = styled.TouchableOpacity`
+  margin: 0;
+  padding: 0;
+`;
 const MoreText = styled.Text`
   font-size: 15px;
 `;
