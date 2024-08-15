@@ -1,5 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
-import RootNavigator from './navigation/RootNavigator';
+import RootNav from './navigation/RootNav';
 import {ThemeProvider} from 'styled-components';
 import {useEffect, useState} from 'react';
 import {Appearance} from 'react-native';
@@ -22,7 +22,7 @@ const App = () => {
   return (
     <ThemeProvider theme={styledTheme}>
       <NavigationContainer theme={navigationTheme}>
-        <RootNavigator />
+        <RootNav />
       </NavigationContainer>
     </ThemeProvider>
   );

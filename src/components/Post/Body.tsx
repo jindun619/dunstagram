@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -5,6 +6,7 @@ const Container = styled.View`
 `;
 const Content = styled.Text`
   font-size: 15px;
+  line-height: 20px;
 `;
 const Id = styled.Text`
   font-size: 15px;
@@ -23,14 +25,22 @@ interface BodyProps {
   content: string;
 }
 const Body = ({id, content}: BodyProps) => {
+  const [hasMoreBtn, setHasMoreBtn] = useState(content.length >= 100);
+
   return (
     <Container>
       <Content>
         <Id>{id} </Id>
-        {content}...
-        <MoreBtn>
-          <MoreText> 더 보기</MoreText>
-        </MoreBtn>
+        {hasMoreBtn ? (
+          <>
+            {content.slice(0, 100)}
+            <MoreBtn onPress={() => setHasMoreBtn(false)}>
+              <MoreText> 더 보기</MoreText>
+            </MoreBtn>
+          </>
+        ) : (
+          content
+        )}
       </Content>
     </Container>
   );

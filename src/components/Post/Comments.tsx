@@ -1,4 +1,7 @@
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import styled from 'styled-components/native';
+import {RootNavParamList} from '../../navigation/RootNav';
 
 const Container = styled.View`
   padding: 10px 0 5px 10px;
@@ -25,19 +28,21 @@ const NewCommentText = styled.Text`
 `;
 
 const Comments = () => {
+  const navigation =
+    useNavigation<StackNavigationProp<RootNavParamList, 'Tabs'>>();
   return (
     <Container>
-      <MoreBtn>
+      <MoreBtn onPress={() => navigation.push('Comment')}>
         <MoreText>댓글 모두 보기</MoreText>
       </MoreBtn>
-      <NewComment>
+      {/* <NewComment>
         <NewCommentImage
           source={{
             uri: 'https://i.pinimg.com/736x/21/96/b4/2196b424fc154e2647ce50b95dfe5e5e.jpg',
           }}
         />
         <NewCommentText>댓글 달기...</NewCommentText>
-      </NewComment>
+      </NewComment> */}
     </Container>
   );
 };
