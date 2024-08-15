@@ -8,7 +8,6 @@ const Container = styled.View``;
 const FlatList = styled.FlatList`` as unknown as typeof RNFlatList;
 const Image = styled.Image`
   width: ${SCREEN_WIDTH}px;
-  height: ${SCREEN_WIDTH}px;
 `;
 const PaginationContainer = styled.View`
   flex-direction: row;
@@ -26,12 +25,13 @@ const PaginationDot = styled.View<{active: boolean}>`
 
 interface ImagesSliderProps {
   images: string[];
+  height: number;
 }
-const ImagesSlider = ({images}: ImagesSliderProps) => {
+const ImagesSlider = ({images, height}: ImagesSliderProps) => {
   const [activeIndex, setImageIndex] = useState(0);
 
   const renderItem = ({item}: {item: string}) => (
-    <Image source={{uri: item}} resizeMode="contain" />
+    <Image source={{uri: item}} resizeMode="contain" height={height} />
   );
   const renderPagination = () => (
     <PaginationContainer>

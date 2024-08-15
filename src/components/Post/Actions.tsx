@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionBtn from './ActionBtn';
+import {Comment, User} from '../../utils/types';
 
 const Container = styled.View`
   flex-direction: row;
@@ -14,25 +15,30 @@ const BtnsContainer = styled.View`
 `;
 const BookmarkBtn = styled.TouchableOpacity``;
 
-const Actions = () => {
+interface ActionsProps {
+  likes: User[];
+  comments: Comment[];
+  shares: number;
+}
+const Actions = ({likes, comments, shares}: ActionsProps) => {
   return (
     <Container>
       <BtnsContainer>
         <ActionBtn
           name="heart-outline"
-          number={250}
+          number={likes.length}
           onPressIcon={() => {}}
           onPressNumber={() => {}}
         />
         <ActionBtn
           name="chatbubble-outline"
-          number={8}
+          number={comments.length}
           onPressIcon={() => {}}
           onPressNumber={() => {}}
         />
         <ActionBtn
           name="send-outline"
-          number={52}
+          number={shares}
           onPressIcon={() => {}}
           onPressNumber={() => {}}
         />

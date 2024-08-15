@@ -3,8 +3,6 @@ import styled from 'styled-components/native';
 const Container = styled.View`
   padding: 0 10px;
 `;
-
-const ContentContainer = styled.View``;
 const Content = styled.Text`
   font-size: 15px;
 `;
@@ -13,25 +11,27 @@ const Id = styled.Text`
   font-weight: 600;
 `;
 const MoreBtn = styled.TouchableOpacity`
-  margin: 0;
-  padding: 0;
+  height: 15px;
 `;
 const MoreText = styled.Text`
   font-size: 15px;
+  color: ${props => props.theme.neutralText};
 `;
-const Body = () => {
+
+interface BodyProps {
+  id: string;
+  content: string;
+}
+const Body = ({id, content}: BodyProps) => {
   return (
     <Container>
-      <ContentContainer>
-        <Content>
-          <Id>Manchester.City </Id>
-          Manchester City Football Club is an English football club based in
-          Manchester that competes in the Premier League...
-          <MoreBtn>
-            <MoreText>더 보기</MoreText>
-          </MoreBtn>
-        </Content>
-      </ContentContainer>
+      <Content>
+        <Id>{id} </Id>
+        {content}...
+        <MoreBtn>
+          <MoreText> 더 보기</MoreText>
+        </MoreBtn>
+      </Content>
     </Container>
   );
 };
