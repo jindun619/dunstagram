@@ -5,6 +5,8 @@ import ImagesSlider from './ImagesSlider';
 import Comments from './Comments';
 import Header from './Header';
 import {Comment, User} from '../../utils/types';
+import {fetchData} from '../../utils/fetchData';
+import {useQuery} from '@tanstack/react-query';
 
 const Container = styled.View`
   width: 100%;
@@ -16,8 +18,8 @@ const Date = styled.Text`
   color: ${props => props.theme.neutralText};
 `;
 
-interface PostProps {
-  author: User;
+export interface PostProps {
+  authorId: number;
   images: string[];
   actions: {
     likes: User[];
@@ -27,17 +29,22 @@ interface PostProps {
   content: string;
   date: string;
 }
-const Post = ({author, images, actions, content, date}: PostProps) => {
+const Post = ({authorId, images, actions, content, date}: PostProps) => {
+  const {data: authorData} = useQuery({
+    queryKey: ['user', authorId],
+    queryFn: () => fetchData.user(authorId),
+  });
+
   return (
     <Container>
-      <Header image={author.profileImage} id={author.id} />
+      <Header image={authorData?.imageUrl} id={authorData?.name} />
       <ImagesSlider images={images} height={300} />
       <Actions
         likes={actions.likes}
         comments={actions.comments}
         shares={actions.shares}
       />
-      <Body id={author.id} content={content} />
+      <Body id={authorData?.name} content={content} />
       <Comments />
       <Date>{date}</Date>
     </Container>

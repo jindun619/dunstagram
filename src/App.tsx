@@ -5,8 +5,11 @@ import {useEffect, useState} from 'react';
 import {Appearance} from 'react-native';
 import {dark, light, Theme} from './utils/theme';
 import {DefaultTheme, DarkTheme} from '@react-navigation/native';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
 const App = () => {
+  const queryClient = new QueryClient();
+
   const [appTheme, setAppTheme] = useState('light');
 
   useEffect(() => {
@@ -20,11 +23,13 @@ const App = () => {
   const navigationTheme = appTheme === 'light' ? DefaultTheme : DarkTheme;
 
   return (
-    <ThemeProvider theme={styledTheme}>
-      <NavigationContainer theme={navigationTheme}>
-        <RootNav />
-      </NavigationContainer>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={styledTheme}>
+        <NavigationContainer theme={navigationTheme}>
+          <RootNav />
+        </NavigationContainer>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 
