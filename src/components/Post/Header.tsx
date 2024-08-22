@@ -7,6 +7,7 @@ const Container = styled.View`
   align-items: center;
   width: 100%;
   padding: 0 10px;
+  margin-bottom: 10px;
 `;
 const Profile = styled.View`
   flex: 1;

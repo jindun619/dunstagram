@@ -37,7 +37,7 @@ const Post = ({authorId, images, actions, content, date}: PostProps) => {
 
   return (
     <Container>
-      <Header image={authorData?.imageUrl} id={authorData?.name} />
+      <Header image={authorData?.profileImage} id={authorData?.name} />
       <ImagesSlider images={images} height={300} />
       <Actions
         likes={actions.likes}
