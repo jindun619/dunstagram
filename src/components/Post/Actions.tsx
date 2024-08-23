@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionBtn from './ActionBtn';
-import {Comment, User} from '../../utils/types';
+import {Comment} from '../../utils/types';
 
 const Container = styled.View`
   flex-direction: row;
@@ -16,7 +16,7 @@ const BtnsContainer = styled.View`
 const BookmarkBtn = styled.TouchableOpacity``;
 
 interface ActionsProps {
-  likes: User[];
+  likes: number;
   comments: Comment[];
   shares: number;
 }
@@ -26,7 +26,7 @@ const Actions = ({likes, comments, shares}: ActionsProps) => {
       <BtnsContainer>
         <ActionBtn
           name="heart-outline"
-          number={likes.length}
+          number={likes}
           onPressIcon={() => {}}
           onPressNumber={() => {}}
         />

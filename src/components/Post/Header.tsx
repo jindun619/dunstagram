@@ -30,9 +30,9 @@ const ConfigBtn = styled.TouchableOpacity``;
 
 interface HeaderProps {
   image: string;
-  id: string;
+  name: string;
 }
-const Header = ({image, id}: HeaderProps) => {
+const Header = ({image, name}: HeaderProps) => {
   return (
     <Container>
       <Profile>
@@ -44,7 +44,7 @@ const Header = ({image, id}: HeaderProps) => {
           />
         </AvatarBtn>
         <IdBtn>
-          <Id>{id}</Id>
+          <Id>{name}</Id>
         </IdBtn>
       </Profile>
       <ConfigBtn>

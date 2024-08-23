@@ -21,16 +21,16 @@ const MoreText = styled.Text`
 `;
 
 interface BodyProps {
-  id: string;
+  name: string;
   content: string;
 }
-const Body = ({id, content}: BodyProps) => {
+const Body = ({name, content}: BodyProps) => {
   const [hasMoreBtn, setHasMoreBtn] = useState(content.length >= 100);
 
   return (
     <Container>
       <Content>
-        <Id>{id} </Id>
+        <Id>{name} </Id>
         {hasMoreBtn ? (
           <>
             {content.slice(0, 100)}
