@@ -31,7 +31,7 @@ const Post = ({
       <ImagesSlider images={images} height={300} />
       <Actions likes={likes} comments={comments} shares={shares} />
       <Body name={author.name} content={content} />
-      <Comments />
+      <Comments data={comments} />
       <Date>{date}</Date>
     </Container>
   );

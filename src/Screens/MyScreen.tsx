@@ -3,16 +3,17 @@ import styled from 'styled-components/native';
 
 const Container = styled.View`
   flex: 1;
+  background-color: ${props => props.theme.mainBg};
   justify-content: center;
   align-items: center;
 `;
 
-const Comment = () => {
+const MyScreen = () => {
   return (
     <Container>
-      <Text>Comment</Text>
+      <Text>New</Text>
     </Container>
   );
 };
 
-export default Comment;
+export default MyScreen;

@@ -8,12 +8,12 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const My = () => {
+const SearchScreen = () => {
   return (
     <Container>
-      <Text>New</Text>
+      <Text>Search</Text>
     </Container>
   );
 };
 
-export default My;
+export default SearchScreen;

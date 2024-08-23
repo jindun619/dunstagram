@@ -2,6 +2,9 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import styled from 'styled-components/native';
 import {RootNavParamList} from '../../navigation/RootNav';
+import {CommentsDataType} from '../../utils/types';
+import {useQueries} from '@tanstack/react-query';
+import {fetchData} from '../../utils/fetchData';
 
 const Container = styled.View`
   padding: 10px 0 5px 10px;
@@ -27,12 +30,16 @@ const NewCommentText = styled.Text`
   color: ${props => props.theme.neutralText};
 `;
 
-const Comments = () => {
+interface CommentsProps {
+  data: CommentsDataType[];
+}
+const Comments = ({data}: CommentsProps) => {
   const navigation =
     useNavigation<StackNavigationProp<RootNavParamList, 'Tabs'>>();
+
   return (
     <Container>
-      <MoreBtn onPress={() => navigation.push('Comment')}>
+      <MoreBtn onPress={() => navigation.push('Comment', {comments: data})}>
         <MoreText>댓글 모두 보기</MoreText>
       </MoreBtn>
       {/* <NewComment>

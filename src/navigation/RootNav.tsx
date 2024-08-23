@@ -1,10 +1,11 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import Tabs from './Tabs';
-import Comment from '../Screens/Comment';
+import Comment from '../Screens/CommentScreen';
+import {CommentsDataType} from '../utils/types';
 
 export type RootNavParamList = {
   Tabs: undefined;
-  Comment: undefined;
+  Comment: {comments: CommentsDataType[]};
 };
 const RootNav = () => {
   const Stack = createStackNavigator();

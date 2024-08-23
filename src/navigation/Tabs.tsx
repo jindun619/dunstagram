@@ -1,9 +1,9 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Home from '../Screens/Home';
-import Search from '../Screens/Search';
-import New from '../Screens/New';
-import Reels from '../Screens/Reels';
-import My from '../Screens/My';
+import HomeScreen from '../Screens/HomeScreen';
+import SearchScreen from '../Screens/SearchScreen';
+import NewScreen from '../Screens/NewScreen';
+import ReelsScreen from '../Screens/ReelsScreen';
+import MyScreen from '../Screens/MyScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tabs = () => {
@@ -12,7 +12,7 @@ const Tabs = () => {
     <Tab.Navigator screenOptions={{headerShown: false, tabBarShowLabel: false}}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeScreen}
         options={{
           tabBarIcon: ({size, color}) => (
             <Icon name="home" size={size} color={color} />
@@ -21,7 +21,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={SearchScreen}
         options={{
           tabBarIcon: ({size, color}) => (
             <Icon name="search-outline" size={size} color={color} />
@@ -30,7 +30,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="New"
-        component={New}
+        component={NewScreen}
         options={{
           tabBarIcon: ({size, color}) => (
             <Icon name="add-circle-outline" size={size} color={color} />
@@ -39,14 +39,14 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Reels"
-        component={Reels}
+        component={ReelsScreen}
         options={{
           tabBarIcon: ({size, color}) => (
             <Icon name="videocam-outline" size={size} color={color} />
           ),
         }}
       />
-      <Tab.Screen name="My" component={My} />
+      <Tab.Screen name="My" component={MyScreen} />
     </Tab.Navigator>
   );
 };

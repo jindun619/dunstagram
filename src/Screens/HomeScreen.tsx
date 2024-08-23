@@ -3,7 +3,6 @@ import {useQuery} from '@tanstack/react-query';
 import {fetchData} from '../utils/fetchData';
 import PostsList from '../components/PostsList';
 import {PostDataType} from '../utils/types';
-import {useEffect} from 'react';
 
 const Container = styled.View`
   flex: 1;
@@ -12,15 +11,11 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const Home = () => {
+const HomeScreen = () => {
   const {data: postsData} = useQuery<PostDataType[]>({
     queryKey: ['posts'],
     queryFn: () => fetchData.posts(),
   });
-
-  useEffect(() => {
-    console.log(postsData);
-  }, [postsData]);
 
   if (postsData) {
     return (
@@ -31,4 +26,4 @@ const Home = () => {
   }
 };
 
-export default Home;
+export default HomeScreen;

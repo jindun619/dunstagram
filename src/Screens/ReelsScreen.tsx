@@ -8,12 +8,12 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const New = () => {
+const ReelsScreen = () => {
   return (
     <Container>
-      <Text>New</Text>
+      <Text>Reels</Text>
     </Container>
   );
 };
 
-export default New;
+export default ReelsScreen;
