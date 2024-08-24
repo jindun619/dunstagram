@@ -25,8 +25,13 @@ const IdBtn = styled.TouchableOpacity``;
 const Id = styled.Text`
   font-size: 15px;
   font-weight: 500;
+  color: ${props => props.theme.mainText};
 `;
 const ConfigBtn = styled.TouchableOpacity``;
+const ConfigIcon = styled(Icon)`
+  color: ${props => props.theme.mainText};
+  font-size: 20px;
+`;
 
 interface HeaderProps {
   image: string;
@@ -48,7 +53,7 @@ const Header = ({image, name}: HeaderProps) => {
         </IdBtn>
       </Profile>
       <ConfigBtn>
-        <Icon name="ellipsis-horizontal" size={20} />
+        <ConfigIcon name="ellipsis-horizontal" />
       </ConfigBtn>
     </Container>
   );

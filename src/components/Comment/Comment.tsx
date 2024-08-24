@@ -6,10 +6,10 @@ import {fetchData} from '../../utils/fetchData';
 
 const Container = styled.View`
   width: 100%;
+  padding-right: 5px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
 `;
 const AuthorInfoContainer = styled.View`
   flex-direction: row;
@@ -52,8 +52,15 @@ const ReplyText = styled.Text`
 const LikeBtn = styled.TouchableOpacity`
   align-items: center;
 `;
-const LikeIcon = styled(Icon)``;
-const LikeCount = styled.Text``;
+const LikeIcon = styled(Icon)`
+  font-size: 20px;
+  color: ${props => props.theme.mainText};
+`;
+const LikeCount = styled.Text`
+  font-size: 12px;
+  font-weight: 400;
+  color: ${props => props.theme.mainText};
+`;
 
 interface CommentProps {
   data: CommentsDataType;
@@ -82,7 +89,7 @@ const Comment = ({data}: CommentProps) => {
         </ContentContainer>
       </AuthorInfoContainer>
       <LikeBtn>
-        <LikeIcon name="heart-outline" size={20} />
+        <LikeIcon name="heart-outline" />
         <LikeCount>{data.likes}</LikeCount>
       </LikeBtn>
     </Container>

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -7,6 +7,8 @@ const Container = styled.View`
 const Content = styled.Text`
   font-size: 15px;
   line-height: 20px;
+  color: ${props => props.theme.mainText};
+  font-weight: 400;
 `;
 const Id = styled.Text`
   font-size: 15px;

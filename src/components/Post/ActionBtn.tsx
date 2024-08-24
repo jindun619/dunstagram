@@ -1,42 +1,31 @@
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const Container = styled.View`
+const Container = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 `;
-const IconBtn = styled.TouchableOpacity`
-  margin-right: 3px;
-`;
-const NumberBtn = styled.TouchableOpacity``;
 const ActionIcon = styled(Icon)`
   font-size: 24px;
+  margin-right: 3px;
+  color: ${props => props.theme.mainText};
 `;
 const ActionNumber = styled.Text`
   font-size: 16px;
   font-weight: 500;
+  color: ${props => props.theme.mainText};
 `;
 
 interface ActionBtnProps {
   name: string;
   number: number;
-  onPressIcon: () => void;
-  onPressNumber: () => void;
+  onPress: () => void;
 }
-const ActionBtn = ({
-  name,
-  number,
-  onPressIcon,
-  onPressNumber,
-}: ActionBtnProps) => {
+const ActionBtn = ({name, number, onPress}: ActionBtnProps) => {
   return (
-    <Container>
-      <IconBtn onPress={onPressIcon}>
-        <ActionIcon name={name} />
-      </IconBtn>
-      <NumberBtn onPress={onPressNumber}>
-        <ActionNumber>{number}</ActionNumber>
-      </NumberBtn>
+    <Container onPress={onPress}>
+      <ActionIcon name={name} />
+      <ActionNumber>{number}</ActionNumber>
     </Container>
   );
 };

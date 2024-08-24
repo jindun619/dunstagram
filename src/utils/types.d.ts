@@ -24,10 +24,3 @@ export interface CommentsDataType {
   likes: number;
   author: UserDataType;
 }
-
-export interface Comment {
-  author: User;
-  content: string;
-  date: string;
-  likes: number;
-}

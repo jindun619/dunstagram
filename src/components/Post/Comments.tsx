@@ -1,10 +1,8 @@
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {FlatList as RNFlatList} from 'react-native';
 import styled from 'styled-components/native';
-import {RootNavParamList} from '../../navigation/RootNav';
 import {CommentsDataType} from '../../utils/types';
-import {useQueries} from '@tanstack/react-query';
-import {fetchData} from '../../utils/fetchData';
+import {useState} from 'react';
+import CommentModal from '../Comment/CommentModal';
 
 const Container = styled.View`
   padding: 10px 0 5px 10px;
@@ -14,42 +12,47 @@ const MoreText = styled.Text`
   font-size: 15px;
   color: ${props => props.theme.neutralText};
 `;
-const NewComment = styled.TouchableOpacity`
-  flex-direction: row;
+const ModalContainer = styled.View`
+  background-color: ${props => props.theme.mainBg};
+  justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 75%;
 `;
-const NewCommentImage = styled.Image`
-  width: 20px;
+const ModalHeader = styled.View`
+  width: 100%;
+  padding: 10px 0;
+  border-bottom-width: 0.3px;
+  border-bottom-color: ${props => props.theme.border};
+`;
+const ModalHeaderText = styled.Text`
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: ${props => props.theme.mainText};
+`;
+const FlatList = styled.FlatList`` as unknown as typeof RNFlatList;
+const Separator = styled.View`
   height: 20px;
-  border-radius: 10px;
-  margin-right: 5px;
-`;
-const NewCommentText = styled.Text`
-  font-size: 15px;
-  color: ${props => props.theme.neutralText};
 `;
 
 interface CommentsProps {
-  data: CommentsDataType[];
+  comments: CommentsDataType[];
 }
-const Comments = ({data}: CommentsProps) => {
-  const navigation =
-    useNavigation<StackNavigationProp<RootNavParamList, 'Tabs'>>();
+const Comments = ({comments}: CommentsProps) => {
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <Container>
-      <MoreBtn onPress={() => navigation.push('Comment', {comments: data})}>
+      <MoreBtn onPress={() => setModalVisible(true)}>
         <MoreText>댓글 모두 보기</MoreText>
       </MoreBtn>
-      {/* <NewComment>
-        <NewCommentImage
-          source={{
-            uri: 'https://i.pinimg.com/736x/21/96/b4/2196b424fc154e2647ce50b95dfe5e5e.jpg',
-          }}
-        />
-        <NewCommentText>댓글 달기...</NewCommentText>
-      </NewComment> */}
+      <CommentModal
+        modalVisible={modalVisible}
+        onSwipeComplete={() => setModalVisible(false)}
+        comments={comments}
+      />
     </Container>
   );
 };
